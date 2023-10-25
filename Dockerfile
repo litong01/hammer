@@ -27,8 +27,10 @@ COPY --from=BUILDER /work/bin/* /home/bin/
 COPY ./main.sh /home/bin
 COPY --from=KINDSOURCE /usr/local/bin/kind /home/bin
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/* && apk update
+RUN echo "insecure" > /home/.curlrc
 
 ENV PATH $PATH:/home/bin
+ENV CURL_HOME=/home
 ENV HOME=/home
 
 WORKDIR /home
