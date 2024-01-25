@@ -9,7 +9,10 @@ RUN apk add curl && mkdir -p /work/bin && cd /work && \
     echo "Download helm..." && \
     curl -Lso helm.tar.gz https://get.helm.sh/helm-v3.11.0-linux-${ARCH}.tar.gz && \
     echo "Expand helm..." && \
-    tar -xf helm.tar.gz && mv linux-${ARCH}/helm /work/bin/helm
+    tar -xf helm.tar.gz && mv linux-${ARCH}/helm /work/bin/helm && \
+    echo "Getting stern..." && \
+    curl -L -o /work/bin/stern https://github.com/stern/stern/releases/download/v1.28.0/stern_linux_${ARCH} && \
+    chmod +x /work/bin/stern
 
 FROM email4tong/kind:v0.17.1 as KINDSOURCE
 
