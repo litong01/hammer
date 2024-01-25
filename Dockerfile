@@ -1,4 +1,4 @@
-FROM alpine:3.17.1 as BUILDER
+FROM alpine:3.18.2 as BUILDER
 
 RUN apk add curl && mkdir -p /work/bin && cd /work && \
     ARCH=$(uname -m) && if [[ "${ARCH}" == "aarch64" ]]; then ARCH=arm64; fi && \
@@ -16,7 +16,7 @@ RUN apk add curl && mkdir -p /work/bin && cd /work && \
 
 FROM email4tong/kind:v0.17.1 as KINDSOURCE
 
-FROM alpine:3.17.1
+FROM alpine:3.18.2
 LABEL maintainer="litong01"
 
 ENV PYTHONUNBUFFERED=1
