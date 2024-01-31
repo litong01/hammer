@@ -14,7 +14,7 @@ RUN apk add curl && mkdir -p /work/bin && cd /work && \
     curl -Lso stern.tar.gz https://github.com/stern/stern/releases/download/v1.28.0/stern_1.28.0_linux_${ARCH}.tar.gz && \
     tar -xf stern.tar.gz && mv stern /work/bin/stern
 
-FROM email4tong/kind:v0.17.1 as KINDSOURCE
+FROM email4tong/kind:v0.20.1 as KINDSOURCE
 
 FROM alpine:3.18.2
 LABEL maintainer="litong01"
